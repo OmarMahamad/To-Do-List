@@ -23,5 +23,17 @@ namespace To_Do_List.Models
         //navigate
         public UserModel? UserModel { get; set; }
 
+
+
+        public enum StateEnum
+        {
+            Work,
+            Life,
+            Study
+        }
+
+
+
     }
+    
 }
