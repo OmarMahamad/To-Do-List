@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using To_Do_List.Data;
+using To_Do_List.Models;
 
 namespace To_Do_List.Controllers
 {
@@ -15,10 +16,15 @@ namespace To_Do_List.Controllers
         {
             return View();
         }
+        
+        public IActionResult SignUp()
+        {
+            return View();
+        }
 
         public IActionResult Logout()
         {
-            return View();
+            return RedirectToAction("Login");
         }
 
         [HttpPost]
@@ -33,13 +39,22 @@ namespace To_Do_List.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp()
+        public IActionResult SignUp(UserModel user)
         {
-            
+            if(ModelState.IsValid)
+            {
+                var check = _dbContext.Users.Where(u=>u.Email==user.Email);
+                if (check==null)
+                {
+                    _dbContext.Users.Add(user);
+                    _dbContext.SaveChanges();
+                    return RedirectToAction("Home", "Tasks");
+                }
+                ViewBag.Email = "The Email is eardy Register";
+                return View();
+            }
             return View();
         }
-
-
 
 
 

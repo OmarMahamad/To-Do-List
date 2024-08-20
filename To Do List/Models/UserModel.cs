@@ -13,7 +13,7 @@ namespace To_Do_List.Models
         [Required]
         public string Password { get; set; }
 
-        public ICollection<TaskModel> taskModels { get; set; }
+        public ICollection<TaskModel>? taskModels { get; set; }
 
     }
 }

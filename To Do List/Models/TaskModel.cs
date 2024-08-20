@@ -21,7 +21,7 @@ namespace To_Do_List.Models
         public DateOnly End { get; set; }
 
         //navigate
-        public UserModel UserModel { get; set; }
+        public UserModel? UserModel { get; set; }
 
     }
 }
